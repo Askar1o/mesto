@@ -1,0 +1,7 @@
+.header__line {
+  background-color: #545454;
+  width: 100%;
+  border: .5px #545454 solid;
+  box-sizing: border-box;
+  justify-content: center;
+}
