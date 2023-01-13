@@ -29,42 +29,42 @@
         <img src="./images/Karachayevsk.jpg" alt="Карачаевск" class="element__mask-group">
         <div class="element__wrap">
           <h2 class="element__title">Карачаевск</h2>
-          <button class="element__button" type="button"></button>
+          <button class="element__button element__button_active" type="button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/Elbrus.jpg" alt="Эльбрус" class="element__mask-group">
         <div class="element__wrap">
           <h2 class="element__title">Гора Эльбрус</h2>
-          <button class="element__button" type="button"></button>
+          <button class="element__button element__button_active" type="button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/Dombai.jpg" alt="Домбай" class="element__mask-group">
         <div class="element__wrap">
           <h2 class="element__title">Домбай</h2>
-          <button class="element__button" type="button"></button>
+          <button class="element__button element__button_active" type="button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/Elbrus.jpg" alt="Эльбрус" class="element__mask-group">
         <div class="element__wrap">
           <h2 class="element__title">Гора Эльбрус</h2>
-          <button class="element__button" type="button"></button>
+          <button class="element__button element__button_active" type="button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/Dombai.jpg" alt="Домбай" class="element__mask-group">
         <div class="element__wrap">
           <h2 class="element__title">Домбай</h2>
-          <button class="element__button" type="button"></button>
+          <button class="element__button element__button_active" type="button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/Karachayevsk.jpg" alt="Карачаевск" class="element__mask-group">
         <div class="element__wrap">
           <h2 class="element__title">Карачаевск</h2>
-          <button class="element__button" type="button"></button>
+          <button class="element__button element__button_active" type="button"></button>
         </div>
       </div>
     </section>
@@ -72,16 +72,17 @@
   <footer class="footer">
     <p class="footer__subtitle">&copy;&nbsp;2020 Mesto Russia</p>
   </footer>
-  <section class="popup popup_opened">
+  <section class="popup">
     <div class="popup__container">
       <button class="popup__button-close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form action="" class="popup__form">
-        <input type="text" name="username" class="popup__name" value="Жак-Ив Кусто">
-        <input type="text" name="about-me" class="popup__name" value="Исследователь океана">
+        <input type="text" name="username" class="popup__name popup__type_username" value="Жак-Ив Кусто">
+        <input type="text" name="job" class="popup__name popup__type_job" value="Исследователь океана">
+        <button class="popup__button-save" type="submit">Сохранить</button>
       </form>
-      <button class="popup__button-save" type="button">Сохранить</button>
     </div>
   </section>
+  <script src="./script/index.js"></script>
 </body>
 </html>

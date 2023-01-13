@@ -9,7 +9,3 @@
 .element__button:hover {
   opacity: 0.5;
 }
-
-.element__button:active {
-  background-color: #000000;
-}
