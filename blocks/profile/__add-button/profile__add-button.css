@@ -4,10 +4,12 @@
   background: url(../../../images/add_button.svg) no-repeat center black;
   border: 2px solid white;
   box-sizing: border-box;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1280px) {

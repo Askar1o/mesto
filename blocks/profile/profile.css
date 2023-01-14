@@ -7,8 +7,8 @@
 
 @media screen and (min-width: 1280px) {
   .profile {
-    width: calc(100% - (200px * 2));
-    margin: 40px auto 51px;
+    width: 880px;
+    margin: 40px 200px 51px;
     flex-direction: row;
     align-items: center;
   }

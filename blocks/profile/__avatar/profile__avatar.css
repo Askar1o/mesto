@@ -4,6 +4,8 @@
   border-radius: 120px;
   justify-content: center;
   margin: 0 auto 30px;
+  object-fit: cover;
+  object-position: center;
 }
 
 @media screen and (min-width: 1280px) {

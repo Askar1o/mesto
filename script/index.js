@@ -37,4 +37,4 @@ function openSubmit () {
 
 popupOpenButtonElement.addEventListener('click', openSubmit);
 popupCloseButtonElement.addEventListener('click', closePopup);
-popupButtonSave.addEventListener('click', closePopup);
+popupButtonSave.addEventListener('submit', closePopup);

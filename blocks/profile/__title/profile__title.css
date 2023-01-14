@@ -17,5 +17,7 @@
     font-size: 42px;
     line-height: 0.87;
     margin-right: 18px;
+    min-height: 39px;
+    margin-top: 5px;
   }
 }
