@@ -4,8 +4,8 @@ const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 const popupButtonSave = document.querySelector('.popup__button-save');
 
 let formElement = document.querySelector('.popup__form');
-let nameInput = document.querySelector('.popup__type_username');
-let jobInput = document.querySelector('.popup__type_job');
+let nameInput = document.querySelector('.popup__type_input_username');
+let jobInput = document.querySelector('.popup__type_input_job');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 
@@ -37,4 +37,3 @@ function openSubmit () {
 
 popupOpenButtonElement.addEventListener('click', openSubmit);
 popupCloseButtonElement.addEventListener('click', closePopup);
-popupButtonSave.addEventListener('submit', closePopup);

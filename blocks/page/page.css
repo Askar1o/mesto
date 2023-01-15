@@ -12,3 +12,11 @@
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
 }
+
+@media screen and (min-width: 1280px) {
+  .page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+}
