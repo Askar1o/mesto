@@ -12,9 +12,9 @@
   
 @media screen and (min-width: 1280px) {
   .popup__type:last-child {
-  margin-bottom: 50px;
+    margin-bottom: 50px;
   }  
   .popup__type {
-  width: 100%;
+    width: 100%;
   }
 }

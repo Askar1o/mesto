@@ -8,6 +8,7 @@
   height: 18px;
   border: 1px solid white;
   box-sizing: border-box;
+  margin-bottom: 5px;
 }
 
 .profile__edit-button:hover {
@@ -20,6 +21,6 @@
     width: 24px;
     height: 24px;
     background-size: 10px;
-    margin-bottom: 7px;
+    margin-bottom: 11px;
   }  
 }
