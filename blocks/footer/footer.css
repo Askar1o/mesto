@@ -5,7 +5,8 @@
 
 @media screen and (min-width: 1280px) {
   .footer {
-    width: calc(100% - 200px - 762px);
-    margin: 0 762px 60px 200px;
+    max-width: 880px;
+    margin: 0 200px 60px;
+    display: flex;
   }
 }
