@@ -1,5 +1,5 @@
 .element__button {
-  background: url(../../../images/like_button.svg);
+  background: url(../../../images/like_button.svg) no-repeat;
   width: 22px;
   height: 19px;
   border: none;
