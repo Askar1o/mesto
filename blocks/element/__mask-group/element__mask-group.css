@@ -1,8 +1,9 @@
 .element__mask-group {
   width: 100%;
   border-radius: 10px 10px 0 0;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
+  min-height: 282px;
 }
 
 @media screen and (min-width: 1280px) {
