@@ -1,46 +1,44 @@
-const popupElement = document.querySelector('.popup');
-const popupName = document.querySelector('.popup_type_name');
+const popupProfile = document.querySelector('.popup_type_name');
 const popupPlace = document.querySelector('.popup_type_place');
 const popupBigImage = document.querySelector('.popup_type_big-image');
-const popupCloseButtonElementName = popupName.querySelector('.popup__button-close');
+const popupCloseButtonElementName = popupProfile.querySelector('.popup__button-close');
 const popupCloseButtonElementPlace = popupPlace.querySelector('.popup__button-close');
 const popupCloseButtonBigImage = popupBigImage.querySelector('.popup__button-close');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
-const popupButtonSave = document.querySelector('.popup__button-save');
 const popupAddButton = document.querySelector('.profile__add-button');
 
-let formElement = document.querySelector('.popup__form_profile');
-let nameInput = document.querySelector('.popup__type_input_username');
-let jobInput = document.querySelector('.popup__type_input_job');
-let profileTitle = document.querySelector('.profile__title');
-let profileSubtitle = document.querySelector('.profile__subtitle');
-let formPopupPlace = document.querySelector('.popup__form_place');
+const formElement = document.querySelector('.popup__form_profile');
+const nameInput = document.querySelector('.popup__type_input_username');
+const jobInput = document.querySelector('.popup__type_input_job');
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
+const formPopupPlace = document.querySelector('.popup__form_place');
 
 const togglePopup = function (popup) {
   popup.classList.toggle('popup_opened');
 }
 
-function handleFormSubmit (evt) {
+function handleFormSubmitProfile (evt) {
   evt.preventDefault();
 
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
   
-  togglePopup(popupName);
+  togglePopup(popupProfile);
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener('submit', handleFormSubmitProfile);
 
-function openSubmit () { 
+function openSubmitProfile () { 
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 
-  togglePopup(popupName);
+  togglePopup(popupProfile);
 }
 
-popupOpenButtonElement.addEventListener('click', openSubmit);
+popupOpenButtonElement.addEventListener('click', openSubmitProfile);
 popupCloseButtonElementName.addEventListener('click', function () {
-  togglePopup(popupName);
+  togglePopup(popupProfile);
 });
 
 const initialCards = [
@@ -75,8 +73,8 @@ const elementsCard = document.querySelector('.elements');
 const cardContainer = elementsCard.querySelector('.element');
 const popupImage = document.querySelector('.popup__image');
 const popupSubtitleImage = document.querySelector('.popup__subtitle-image');
-let popupInputTitle = document.querySelector('.popup__type_input_title');
-let popupInputHref = document.querySelector('.popup__type_input_href');
+const popupInputTitle = document.querySelector('.popup__type_input_title');
+const popupInputHref = document.querySelector('.popup__type_input_href');
 
 const createCard = (item) => {
   const card = cardsTemplate.querySelector('.element').cloneNode(true);
@@ -84,8 +82,8 @@ const createCard = (item) => {
   const cardLikeButton = card.querySelector('.element__button');
   const elementBigImage = card.querySelector('.element__mask-group');
 
-  card.querySelector('.element__mask-group').alt = item.name;
-  card.querySelector('.element__mask-group').src = item.link;
+  elementBigImage.alt = item.name;
+  elementBigImage.src = item.link;
   card.querySelector('.element__title').textContent = item.name;
 
   cardDeleteButton.addEventListener('click', function () {
