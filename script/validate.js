@@ -6,54 +6,54 @@ const formValidationConfig = {
   inactiveButtonClass: 'popup__button-save_disabled',
 };
 
-function disableSubmit(evt) {
-  evt.preventDefault();
-}
-
 function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   formList.forEach((form) => {
-    form.addEventListener('submit', disableSubmit);
-    form.addEventListener('input', () => {
-    toggleButton(form, config);
+    const buttonSubmit = form.querySelector(config.submitButtonSelector);
+
+    form.addEventListener('input', (event) => {
+      handleFormInput(event, config);
+      toggleButton(form, config, buttonSubmit);
   });
 
-    addInputListeners(form, config);
-    toggleButton(form, config);
+    toggleButton(form, config, buttonSubmit);
   })
+}
+
+function showError(input, config) {
+  const inputId = input.id;
+  const errorElement = document.querySelector(`#${inputId}-error`);
+
+  input.classList.add(config.inputErrorClass);
+
+  errorElement.textContent = input.validationMessage;
+}
+
+function hideError(input, config) {
+  const inputId = input.id;
+  const errorElement = document.querySelector(`#${inputId}-error`);
+
+  input.classList.remove(config.inputErrorClass);
+
+  errorElement.textContent = '';
 }
 
 function handleFormInput(event, config) {
   const input = event.target;
-  const inputId = input.id;
-  const errorElement = document.querySelector(`#${inputId}-error`);
 
   if (input.validity.valid) {
-    input.classList.remove(config.inputErrorClass);
-    errorElement.textContent = '';
+    hideError(input, config);
   } else {
-    input.classList.add(config.inputErrorClass);
-    errorElement.textContent = input.validationMessage;
+    showError(input, config);
   }
 }
 
-function toggleButton(form, config) {
-  const buttonSubmit = form.querySelector(config.submitButtonSelector);
+function toggleButton(form, config, buttonSubmit) {
   const isFormValid = form.checkValidity();
   
   buttonSubmit.disabled = !isFormValid;
   buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
-}
-
-function addInputListeners(form, config) {
-  const inputList = Array.from(form.querySelectorAll(config.inputSelector));
-
-  inputList.forEach((item) => {
-    item.addEventListener('input', (event) => {
-      handleFormInput(event, config);
-    })
-  })
 }
 
 enableValidation(formValidationConfig);

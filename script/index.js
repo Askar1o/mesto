@@ -1,9 +1,7 @@
 const popupProfile = document.querySelector('.popup_type_name');
 const popupPlace = document.querySelector('.popup_type_place');
 const popupBigImage = document.querySelector('.popup_type_big-image');
-const popupCloseButtonElementName = popupProfile.querySelector('.popup__button-close');
-const popupCloseButtonElementPlace = popupPlace.querySelector('.popup__button-close');
-const popupCloseButtonBigImage = popupBigImage.querySelector('.popup__button-close');
+const popupCloseButtonsElement = document.querySelectorAll('.popup__button-close');
 const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 const popupAddButton = document.querySelector('.profile__add-button');
 
@@ -45,27 +43,24 @@ function openSubmitProfile () {
 }
 
 popupOpenButtonElement.addEventListener('click', openSubmitProfile);
-popupCloseButtonElementName.addEventListener('click', function () {
-  closePopup(popupProfile);
-});
 
 const elementsCard = document.querySelector('.elements');
-const cardContainer = elementsCard.querySelector('.element');
 const cardsTemplate = document.querySelector('#cards').content;
+const cardContainer =  cardsTemplate.querySelector('.element');
 const popupImage = document.querySelector('.popup__image');
 const popupSubtitleImage = document.querySelector('.popup__subtitle-image');
 const popupInputTitle = document.querySelector('.popup__type_input_title');
 const popupInputHref = document.querySelector('.popup__type_input_href');
 
-const createCard = (item) => {
-  const card = cardsTemplate.querySelector('.element').cloneNode(true);
+const createCard = (cardData) => {
+  const card = cardContainer.cloneNode(true);
   const cardDeleteButton = card.querySelector('.element__delete-button');
   const cardLikeButton = card.querySelector('.element__button');
   const elementBigImage = card.querySelector('.element__mask-group');
 
-  elementBigImage.alt = item.name;
-  elementBigImage.src = item.link;
-  card.querySelector('.element__title').textContent = item.name;
+  elementBigImage.alt = cardData.name;
+  elementBigImage.src = cardData.link;
+  card.querySelector('.element__title').textContent = cardData.name;
 
   cardDeleteButton.addEventListener('click', function () {
     card.remove();
@@ -78,34 +73,33 @@ const createCard = (item) => {
   elementBigImage.addEventListener('click', function () {
     openPopup(popupBigImage);
 
-    popupImage.alt = item.name;
-    popupImage.src = item.link;
-    popupSubtitleImage.textContent = item.name;
+    popupImage.alt = cardData.name;
+    popupImage.src = cardData.link;
+    popupSubtitleImage.textContent = cardData.name;
   })
   return card;
 }
 
-popupCloseButtonBigImage.addEventListener('click', function () {
-  closePopup(popupBigImage);
-})
-
-const renderCards = (cardName) => {
-  elementsCard.append(createCard(cardName));
+const renderCard = (cardData) => {
+  elementsCard.append(createCard(cardData));
 }
 
 initialCards.forEach((item) => {
-  renderCards(item);
+  renderCard(item);
 }) 
 
 function openPopupAddButton () {
   openPopup(popupPlace);
 }
 
-function closePopupAddButton (evt) {
+function handleCardFormSubmit (evt) {
   evt.preventDefault();
 
-  const addNewCard = {name: popupInputTitle.value, link: popupInputHref.value};
-  elementsCard.prepend(createCard(addNewCard));
+  const cardData = {name: popupInputTitle.value, link: popupInputHref.value};
+  elementsCard.prepend(createCard(cardData));
+
+  popupInputTitle.textContent = '';
+  popupInputHref.textContent = '';
 
   closePopup(popupPlace);
 }
@@ -117,18 +111,23 @@ function closeByOverlay(event) {
 }
 
 function closeByEscape(event) {
-  const popupList = Array.from(document.querySelectorAll('.popup'))
-  popupList.forEach((popup) => {
-    if (event.key === 'Escape' && popup.classList.contains('popup_opened')) {
-      closePopup(popup);
-    }
-  })
+  if (event.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
 }
 
-document.addEventListener('click', closeByOverlay);
+const popups = document.querySelectorAll('.popup');
 
-formPopupPlace.addEventListener('submit', closePopupAddButton);
-popupAddButton.addEventListener('click', openPopupAddButton);
-popupCloseButtonElementPlace.addEventListener('click', function () {
-  closePopup(popupPlace);
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', closeByOverlay);
 })
+
+formPopupPlace.addEventListener('submit', handleCardFormSubmit);
+popupAddButton.addEventListener('click', openPopupAddButton);
+
+popupCloseButtonsElement.forEach((button) => {
+  button.addEventListener('click', (evt) => {
+    closePopup(evt.target.closest('.popup'));
+  });
+});
