@@ -98,10 +98,13 @@ function handleCardFormSubmit (evt) {
   const cardData = {name: popupInputTitle.value, link: popupInputHref.value};
   elementsCard.prepend(createCard(cardData));
 
-  popupInputTitle.textContent = '';
-  popupInputHref.textContent = '';
+  popupInputTitle.value = '';
+  popupInputHref.value = '';
 
   closePopup(popupPlace);
+
+  evt.submitter.classList.add('popup__button-save_disabled');
+  evt.submitter.disabled = true;
 }
 
 function closeByOverlay(event) {
