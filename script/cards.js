@@ -1,3 +1,4 @@
+//объект с названием и ссылкой для карточек
 export const initialCards = [
   {
     name: 'Архыз',
@@ -24,7 +25,7 @@ export const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
+//класс Card
 export default class Card {
   constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
@@ -33,6 +34,7 @@ export default class Card {
     this._handleCardClick = handleCardClick;
   }
 
+//возвращаем карточку
   _getTemplate() {
     const cardElement = document
     .querySelector(this._templateSelector)
@@ -43,6 +45,7 @@ export default class Card {
     return cardElement;
   }
 
+//функция создания карточки
   generateCard() {
     this._element = this._getTemplate();
 
@@ -62,6 +65,7 @@ export default class Card {
     return this._element;
   }
 
+//
   _openBigImagePopup() {
     this._popupBigImage.classList.add('popup_opened');
 
