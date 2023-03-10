@@ -24,10 +24,10 @@ const popupInputTitle = document.querySelector('.popup__type_input_title');
 const popupInputHref = document.querySelector('.popup__type_input_href');
 const popups = document.querySelectorAll('.popup');
 
-const profileValidation = new FormValidator(formValidationConfig, popupProfile);
+const profileValidation = new FormValidator(formValidationConfig, formElementProfile);
 profileValidation.enableValidation();
 
-const addCardValidation = new FormValidator(formValidationConfig, popupPlace);
+const addCardValidation = new FormValidator(formValidationConfig, formPopupPlace);
 addCardValidation.enableValidation();
 
 //функция открытия попапов
