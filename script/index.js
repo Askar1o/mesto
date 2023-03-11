@@ -1,7 +1,34 @@
-import Card from './cards.js';
-import { initialCards } from './cards.js';
-import FormValidator from './validate.js';
-import { formValidationConfig } from './validate.js';
+import Card from './Cards.js';
+import FormValidator from './FormValidator.js';
+import { formValidationConfig } from './FormValidator.js';
+
+//объект с названием и ссылкой для карточек
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
 const popupProfile = document.querySelector('.popup_type_name');
 const popupPlace = document.querySelector('.popup_type_place');

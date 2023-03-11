@@ -1,30 +1,3 @@
-//объект с названием и ссылкой для карточек
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 //класс Card
 export default class Card {
   constructor(data, templateSelector, handleCardClick) {
@@ -57,6 +30,7 @@ export default class Card {
     this._cardDeleteButton = this._element.querySelector('.element__delete-button');
     this._cardLikeButton = this._element.querySelector('.element__button');
 
+    this._bigImage.alt = this._name;
     this._bigImage.src = this._link;
     this._element.querySelector('.element__title').textContent = this._name;
 
