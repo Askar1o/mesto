@@ -34,7 +34,7 @@
       <button class="popup__button-close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form action="#" class="popup__form popup__form_profile" name="popup__form_profile" novalidate>
-        <input id="input-username" type="text" name="username" class="popup__type popup__type_input_username" placeholder="Имя" required minlength="2" maxlength="40">
+        <input id="input-username" type="text" name="name" class="popup__type popup__type_input_username" placeholder="Имя" required minlength="2" maxlength="40">
         <span id="input-username-error" class="error error_username"></span>
         <input id="input-job" type="text" name="job" class="popup__type popup__type_input_job" placeholder="О себе" required minlength="2" maxlength="200">
         <span id="input-job-error" class="error error_job"></span>
@@ -47,9 +47,9 @@
       <button class="popup__button-close" type="button"></button>
       <h2 class="popup__title">Новое место</h2>
       <form action="#" class="popup__form popup__form_place" name="popup__form_place" novalidate>
-        <input id="input-title" type="text" name="username" class="popup__type popup__type_input_title" placeholder="Название" required minlength="2" maxlength="30">
+        <input id="input-title" type="text" name="name" class="popup__type popup__type_input_title" placeholder="Название" required minlength="2" maxlength="30">
         <span id="input-title-error" class="error error_username"></span>
-        <input id="input-href" type="url" name="job" class="popup__type popup__type_input_href" placeholder="Ссылка на картинку" required>
+        <input id="input-href" type="url" name="link" class="popup__type popup__type_input_href" placeholder="Ссылка на картинку" required>
         <span id="input-href-error" class="error error_job"></span>
         <button class="popup__button-save" type="submit">Создать</button>
       </form>
@@ -74,8 +74,6 @@
       </div>
     </div>
   </template>
-  <!--<script src="./script/validate.js"></script>-->
-  <!--script type="module" src="./script/cards.js"></script>-->
-  <script type="module" src="./script/index.js"></script>
+  <script type="module" src="./pages/index.js"></script>
 </body>
 </html>

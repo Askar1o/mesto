@@ -1,55 +1,71 @@
-import Card from './Cards.js';
-import FormValidator from './FormValidator.js';
-import { formValidationConfig } from './FormValidator.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import { formValidationConfig } from '../utils/conctants.js';
+import Section from '../components/Section.js';
+import { initialCards, popupAddButtonOpen, formElementProfile, formPopupPlace, popupOpenButtonElement, nameInput, jobInput } from '../utils/conctants.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 
-//объект с названием и ссылкой для карточек
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+const popupBigImage = new PopupWithImage('.popup_type_big-image');
+
+//функция создания карточки
+function createCard(item) {
+  const card = new Card ({
+    data: item,
+    handleCardClick: (name, link) => {
+      popupBigImage.openPopup(name, link);
+    }
   },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  '#cards');
+  return card.generateCard();
+}
+
+popupBigImage.setEventListeners();
+
+const popupAddButton = new PopupWithForm({
+  handleFormSubmit: (cardData) => {
+    section.addItem(createCard(cardData));
+    popupAddButton.closePopup();
+  }},
+  '.popup_type_place'
+)
+
+popupAddButton.setEventListeners();
+
+popupAddButtonOpen.addEventListener('click', () => {
+  popupAddButton.openPopup();
+});
+
+const section = new Section({
+  items: initialCards, 
+  renderer: (items) => {
+    section.addItem(createCard(items));
   }
-];
+},
+ '.elements'
+);
 
-const popupProfile = document.querySelector('.popup_type_name');
-const popupPlace = document.querySelector('.popup_type_place');
-const popupBigImage = document.querySelector('.popup_type_big-image');
-const popupImage = popupBigImage.querySelector('.popup__image');
-const popupSubtitleImage = document.querySelector('.popup__subtitle-image');
-const popupCloseButtonsElement = document.querySelectorAll('.popup__button-close');
-const popupOpenButtonElement = document.querySelector('.profile__edit-button');
-const popupAddButton = document.querySelector('.profile__add-button');
+section.renderItems(initialCards);
 
-const formElementProfile = document.querySelector('.popup__form_profile');
-const nameInput = document.querySelector('.popup__type_input_username');
-const jobInput = document.querySelector('.popup__type_input_job');
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-const formPopupPlace = document.querySelector('.popup__form_place');
+const userInfo = new UserInfo({ nameSelector: '.profile__title', jobSelector: '.profile__subtitle' });
 
-const elementsCard = document.querySelector('.elements');
-const popupInputTitle = document.querySelector('.popup__type_input_title');
-const popupInputHref = document.querySelector('.popup__type_input_href');
-const popups = document.querySelectorAll('.popup');
+const popupProfile = new PopupWithForm({
+  handleFormSubmit: ({ name, job }) => {
+    userInfo.setUserInfo(name, job);
+    popupProfile.closePopup();
+  }
+},
+'.popup_type_name'
+);
+
+popupProfile.setEventListeners();
+
+popupOpenButtonElement.addEventListener('click', () => {
+  popupProfile.openPopup();
+  nameInput.value = userInfo.getUserInfo().name;
+  jobInput.value = userInfo.getUserInfo().job;
+});
 
 const profileValidation = new FormValidator(formValidationConfig, formElementProfile);
 profileValidation.enableValidation();
@@ -58,7 +74,7 @@ const addCardValidation = new FormValidator(formValidationConfig, formPopupPlace
 addCardValidation.enableValidation();
 
 //функция открытия попапов
-const openPopup = function (popup) {
+/*const openPopup = function (popup) {
   popup.classList.toggle('popup_opened');
 
   document.addEventListener('keydown', closeByEscape);
@@ -69,9 +85,9 @@ const closePopup = function (popup) {
   popup.classList.toggle('popup_opened');
 
   document.removeEventListener('keydown', closeByEscape);
-}
+}*/
 
-function handleFormSubmitProfile (evt) {
+/*function handleFormSubmitProfile (evt) {
   evt.preventDefault();
 
   profileTitle.textContent = nameInput.value;
@@ -92,12 +108,6 @@ function openPopupAddButton () {
   openPopup(popupPlace);
 }
 
-//функция создания карточки
-function createCard(item) {
-  const card = new Card (item, '#cards', handleCardClick);
-  return card.generateCard();
-}
-
 //функция закрытия попапа(создания карточки)
 function handleCardFormSubmit (evt) {
   evt.preventDefault();
@@ -114,7 +124,7 @@ function handleCardFormSubmit (evt) {
 }
 
 //функция закрытия попапа по оверлай
-function closeByOverlay(event) {
+/*function closeByOverlay(event) {
   if (event.target.classList.contains('popup_opened')) {
     closePopup(event.target);
   }
@@ -135,9 +145,9 @@ function handleCardClick(name, link) {
   popupSubtitleImage.textContent = name;
   
   openPopup(popupBigImage);
-}
+}*/
 
-formElementProfile.addEventListener('submit', handleFormSubmitProfile);
+/*formElementProfile.addEventListener('submit', handleFormSubmitProfile);
 popupOpenButtonElement.addEventListener('click', openSubmitProfile);
 
 //слушатель на все попапы для закрытия по оверлей
@@ -161,4 +171,4 @@ popupCloseButtonsElement.forEach((button) => {
 //создание новой карточки
 initialCards.forEach((item) => {
   elementsCard.append(createCard(item));
-})
+})*/
