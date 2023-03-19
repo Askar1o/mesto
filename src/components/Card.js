@@ -22,13 +22,7 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
 
-    //this._popupBigImage = document.querySelector('.popup_type_big-image');
     this._bigImage = this._element.querySelector('.element__mask-group');
-    /*this._popupCloseBigImage = this._popupBigImage.querySelector('.popup__button-close_image');
-    this._popupSubtitleImage = this._popupBigImage.querySelector('.popup__subtitle-image');
-    this._popupImage = document.querySelector('.popup__image');
-    this._cardDeleteButton = this._element.querySelector('.element__delete-button');
-    this._cardLikeButton = this._element.querySelector('.element__button');*/
 
     this._element.querySelector('.element__mask-group').alt = this._name;
     this._element.querySelector('.element__mask-group').src = this._link;
@@ -38,15 +32,6 @@ export default class Card {
 
     return this._element;
   }
-
-
-/*  _openBigImagePopup() {
-    this._popupBigImage.classList.add('popup_opened');
-
-    this._popupImage.src = this._link;
-    this._popupImage.alt = this._name;
-    this._popupSubtitleImage.textContent = this._name;
-  }*/
 
   _deleteCardElement() {
     this._element.remove();
