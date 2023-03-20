@@ -36,6 +36,7 @@ export const formValidationConfig = {
   
 export const popupOpenButtonElement = document.querySelector('.profile__edit-button');
 export const popupAddButtonOpen = document.querySelector('.profile__add-button');
+export const popupSaveButton = document.querySelector('.popup__button-save');
   
 export const formElementProfile = document.querySelector('.popup__form_profile');
 export const nameInput = document.querySelector('.popup__type_input_username');

@@ -52,4 +52,14 @@ export default class FormValidator {
       });
     })
   }
+
+  resetValidator () {
+    this._toggleButton();
+
+    this._inputList.forEach((inputElement) => {
+      inputElement.addEventListener('input', () => {
+        this._handleFormInput(inputElement);
+      });
+    })
+  }
 }

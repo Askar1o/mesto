@@ -26,15 +26,15 @@ popupBigImage.setEventListeners();
 const popupAddButton = new PopupWithForm({
   handleFormSubmit: (cardData) => {
     section.addItem(createCard(cardData));
-    popupAddButton.closePopup();
   }},
   '.popup_type_place'
-)
+);
 
 popupAddButton.setEventListeners();
 
 popupAddButtonOpen.addEventListener('click', () => {
   popupAddButton.openPopup();
+  addCardValidation.resetValidator();
 });
 
 const section = new Section({
@@ -53,7 +53,6 @@ const userInfo = new UserInfo({ nameSelector: '.profile__title', jobSelector: '.
 const popupProfile = new PopupWithForm({
   handleFormSubmit: ({ name, job }) => {
     userInfo.setUserInfo(name, job);
-    popupProfile.closePopup();
   }
 },
 '.popup_type_name'
