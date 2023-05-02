@@ -11,7 +11,6 @@ export default class Api {
     return Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  // Получение карточек с сервера
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
@@ -19,7 +18,6 @@ export default class Api {
       .then(res => this._parseResponse(res));
   }
 
-  // Добавление новой карточки через попап
   addCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
@@ -32,7 +30,6 @@ export default class Api {
       .then(res => this._parseResponse(res));
   }
 
-  // Удаление карточки
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
@@ -41,7 +38,6 @@ export default class Api {
       .then(res => this._parseResponse(res));
   }
 
-  // Ставим лайк карточке
   setLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: 'PUT',
@@ -50,7 +46,6 @@ export default class Api {
       .then(res => this._parseResponse(res));
   }
 
-  // Удаляем лайк
   deleteLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: 'DELETE',
@@ -59,7 +54,6 @@ export default class Api {
       .then(res => this._parseResponse(res));
   }
 
-  // Получение информации о пользователе с сервера
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
@@ -67,7 +61,6 @@ export default class Api {
       .then(res => this._parseResponse(res));
   }
 
-  // Редактирование информации о пользователе через попап
   editUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
@@ -80,7 +73,6 @@ export default class Api {
       .then(res => this._parseResponse(res));
   }
 
-  // Редактирование аватара пользователя через попап
   editAvatar(data) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
