@@ -3,6 +3,7 @@
   margin: 42px auto 34px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 @media screen and (min-width: 1280px) {

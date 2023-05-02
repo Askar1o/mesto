@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
 </head>
+
 <body class="page">
   <header class="header">
     <img src="<%=require('./images/logo.svg')%>" alt="Логотип Место" class="header__logo">
   </header>
+
   <main class="content">
     <section class="profile">
       <img src="<%=require('./images/portret.jpg')%>" alt="Жак-Ив Кусто" class="profile__avatar">
+      <button class="profile__avatar-button" type="button"></button>
       <div class="profile__info">
         <div class="profile__name">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -25,9 +28,11 @@
     <section class="elements">
     </section>
   </main>
+
   <footer class="footer">
     <p class="footer__subtitle">&copy;&nbsp;2020 Mesto Russia</p>
   </footer>
+
   <section class="popup popup_type_name">
     <div class="popup__container">
       <button class="popup__button-close" type="button"></button>
@@ -41,6 +46,7 @@
       </form>
     </div>
   </section>
+
   <section class="popup popup_type_place">
     <div class="popup__container">
       <button class="popup__button-close" type="button"></button>
@@ -54,6 +60,29 @@
       </form>
     </div>
   </section>
+
+  <section class="popup popup_type_update">
+    <div class="popup__container popup__container_update">
+      <button class="popup__button-close" type="button"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form action="#" class="popup__form popup__form_update" name="popup__form_update" novalidate>
+        <input id="input-update" type="url" name="avatar" class="popup__type popup__type_input_update" placeholder="Ссылка на картинку" required>
+        <span id="input-update-error" class="error error_job"></span>
+        <button class="popup__button-save" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="popup popup_type_correction">
+    <div class="popup__container popup__container_correction">
+      <button class="popup__button-close" type="button"></button>
+      <h2 class="popup__title popup__title_correction">Вы уверены?</h2>
+      <form action="#" name="delete-form" class="popup__form">
+        <button class="popup__button-save" type="submit">Да</button>
+      </form>
+    </div>
+  </section>
+
   <section class="popup popup_type_big-image">
     <figure class="popup__container-image">
       <button class="popup__button-close popup__button-close_image"></button>
@@ -61,7 +90,8 @@
       <figcaption class="popup__subtitle-image"></figcaption>
     </figure>
   </section>
-  <template id="cards">
+
+  <template class="element__template" id="cards">
     <div class="element">
       <div class="element__mask">
         <button class="element__delete-button" type="button"></button>
@@ -69,7 +99,10 @@
       </div>
       <div class="element__wrap">
         <h2 class="element__title"></h2>
-        <button class="element__button"></button>
+        <div class="element__like-wrapper">
+          <button class="element__button"></button>
+          <p class="element__like-quantity"></p>
+        </div>
       </div>
     </div>
   </template>

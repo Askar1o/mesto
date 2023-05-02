@@ -1,18 +1,48 @@
 export default class UserInfo {
-  constructor({ nameSelector, jobSelector }) {
-    this._nameInfo = document.querySelector(nameSelector);
-    this._jobInfo = document.querySelector(jobSelector);
+  constructor({ username, job, avatar }) {
+    this._username = document.querySelector(username);
+    this._job = document.querySelector(job);
+    this._avatar = document.querySelector(avatar);
+  }
+
+  // возвращает объект с данными пользователя
+  getUserInfo() {
+    const userInfo = {
+      username: this._username.textContent,
+      job: this._job.textContent,
+      avatar: this._avatar.src
+    }
+
+    return userInfo;
+  }
+
+  // принимает новые данные пользователя и добавляет их на страницу
+  setUserInfo(data) {
+    this._username.textContent = data.name;
+    this._job.textContent = data.about;
+    this._avatar.src = data.avatar;
+  }
+}
+/*export default class UserInfo {
+  constructor({ username, job, avatar }) {
+    this._username = document.querySelector(username);
+    this._job = document.querySelector(job);
+    this._avatar = document.querySelector(avatar);
   }
 
   getUserInfo() {
-    this._userInfoValues = {};
-    this._userInfoValues['name'] = this._nameInfo.textContent;
-    this._userInfoValues['job'] = this._jobInfo.textContent;
-    return this._userInfoValues;
+    const userInfo = {
+      username: this._username.textContent,
+      job: this._job.textContent,
+      avatar: this._avatar.src
+    }
+
+    return userInfo;
   }
 
-  setUserInfo( name, job ) {
-    this._nameInfo.textContent = name;
-    this._jobInfo.textContent = job;
+  setUserInfo(data) {
+    this._username.textContent = data.name;
+    this._job.textContent = data.about;
+    this._avatar.src = data.avatar;
   }
-}
+}*/

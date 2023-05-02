@@ -3,8 +3,7 @@
   width: 22px;
   height: 19px;
   border: none;
-  margin-right: 5px;
-  margin-top: 5px;
+  padding: 0;
 }
 
 .element__button:hover {
