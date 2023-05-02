@@ -73,7 +73,7 @@ export default class Api {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        name: data.username,
+        name: data.name,
         about: data.job
       })
     })
