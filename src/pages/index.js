@@ -169,7 +169,7 @@ const addCardPopup = new PopupWithForm({
 });
 
 addCardPopup.setEventListeners();
-// обработчик открытия попапа
+
 popupAddButtonOpen.addEventListener('click', () => {
   formAddNewCardValidator.toggleButton();
   addCardPopup.open();
